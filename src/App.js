@@ -1,9 +1,12 @@
 import logo from "./logo.svg";
 import "./App.css";
 import { useState } from "react";
+export function replaceCamelWithSpaces(colorName) {
+  return colorName.replace(/\B([A-Z])\B/g, " $1");
+}
 
 function App() {
-  const [buttonColor, setButtonColor] = useState("blue");
+  const [buttonColor, setButtonColor] = useState("red");
   const [disabled, setDisabled] = useState(false);
 
   const toggleCheckbox = () => {
@@ -11,7 +14,7 @@ function App() {
   };
   const changeButtonColor = () => {
     toggleCheckbox();
-    const newButtonColor = buttonColor === "blue" ? "red" : "blue";
+    const newButtonColor = buttonColor === "red" ? "gray" : "red";
     setButtonColor(newButtonColor);
   };
 
@@ -33,7 +36,7 @@ function App() {
           }}
           onClick={changeButtonColor}
         >
-          Click to turn {buttonColor === "blue" ? "red" : "blue"}
+          Click to turn {buttonColor === "red" ? "gray" : "red"}
         </button>
         <input type="checkbox" disabled={disabled} />
       </div>
